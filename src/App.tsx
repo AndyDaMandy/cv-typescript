@@ -1,26 +1,58 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Cv />
+
     </div>
   );
+}
+
+function Cv() {
+  const [bio, setBio] = useState(
+      {
+        id: 0,
+        name: "blank",
+        address1: "address 1",
+        address2: "",
+        city: "city",
+        state: "state",
+        country: "country"
+      }
+  )
+    const handleClick = (e) => {
+        setBio({
+            id: 0,
+            name: e.name,
+            address1: e.address1,
+            address2: e.address2,
+            city: e.city,
+            state: e.state,
+            country: e.country
+        })
+    }
+  return (
+      <>
+          <div className="text-2xl font-bold content-center mx-auto flex block w-full">
+            <ul>
+                <li>Current Info:</li>
+                <li>{bio.name}</li>
+                <li>{bio.address1}</li>
+                <li>{bio.address2}</li>
+                <li>{bio.city}</li>
+                <li>{bio.state}</li>
+                <li>{bio.country}</li>
+            </ul>
+          </div>
+          <button onClick={handleClick({
+
+          })}></button>
+      </>
+  )
 }
 
 export default App;
